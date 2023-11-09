@@ -1,0 +1,23 @@
+<div class="container">
+  <h1>Vehicle History</h1>
+  <%= form_with url:vehicle_history_bookings_path, method: :get do |form|%>
+    <%= form.label :vehicle_reg_no, class: 'form-label' %>
+    <%= form.text_field :vehicle_reg_no, class: 'form-control' %><br>
+    <%= form.submit 'Show', class: 'btn btn-outline-dark link-offset-2 link-underline link-underline-opacity-0' %>
+  <%end %>
+  <h2>Vehicle Details</h2>
+  <table class='table table-dark table-striped-columns table-hover table-borderless align-middle table-responsive-sm'>
+    <thead>
+    <th>Slot Id</th>
+    <th>Date</th>
+    </thead>
+    <tbody>
+    <% @bookings.each do |booking|%>
+     <tr>
+       <td><%= booking.slot.id %></td>
+       <td><%= booking.in_time.to_date %></td><br>
+     </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  vehicle_id: one
+  slot_id: one
+  in_time: 2023-10-31 12:08:28
+
+two:
+  vehicle_id: two
+  slot_id: two
+  in_time: 2023-10-31 12:08:28

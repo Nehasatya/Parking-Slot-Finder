@@ -1,0 +1,54 @@
+<div class="container">
+  <h1>Book Slot</h1>
+  <%= form_with(model: booking, data: { turbo: false}) do |form| %>
+    <% if booking.errors.full_messages.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@vehicle.errors.count, "error") %> prohibited this topic from being saved:</h2>
+        <ul>
+          <% @vehicle.errors.full_messages.each do |error| %>
+            <li><%= error %></li>
+          <% end %>
+        </ul>
+      </div>
+    <%end %>
+    <%# if flash[:notice].blank? %>
+    <!--    <h1> f lash hash is blank </h1>-->
+    <%#else %>
+    <!--    <h1><%#= flash[notice]%></h1>-->
+    <%# end %>
+
+    <div class="fields form-field">
+      <%= form.label :entry_id, class: 'form-label' %>
+      <%= form.select :entry_id, Entry.pluck(:id)%>
+    </div>
+
+    <div class="fields">
+      <%= form.label :vehicle_reg_no, class: 'form-label' %>
+      <%= form.text_field :vehicle_reg_no, class: 'form-control' %>
+    </div>
+
+<!--    <div class="fields">-->
+      <%#= form.hidden_field :in_time, value: Time.now %>
+<!--    </div>-->
+    <br>
+
+    <div class="fields">
+      <%= form.submit 'Book', class: 'btn btn-outline-dark link-offset-2 link-underline link-underline-opacity-0 '  %>
+    </div>
+
+    <br>
+
+  <%end %>
+</div>
+<!--<p><b> Displaying Latitude and Longitude</b></p>-->
+<!--<button onclick="track_location()">Click Me</button>-->
+<!--<p id="paraID"></p>-->
+<!--<p id="paraID1"></p>-->
+<script>
+    // var variable1 = document.getElementById("paraID");
+    // var variable2 = document.getElementById("paraID1");
+
+    // This function will get your current location
+    // This function will show your current location
+
+</script>

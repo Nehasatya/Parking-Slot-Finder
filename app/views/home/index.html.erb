@@ -1,0 +1,12 @@
+<div class="container">
+  <h1>Welcome</h1><br>
+  <div class = 'btn-group'>
+    <%= link_to 'Book Slot', new_booking_path, class: 'btn btn-outline-dark' %>
+  </div>
+  <div class = 'btn-group'>
+    <%= link_to 'Slot History', slot_history_bookings_path, class: 'btn btn-outline-dark' %>
+    <%= link_to 'Vehicle History', vehicle_history_bookings_path, class: 'btn btn-outline-dark'%>
+    <%= link_to 'First Entry', first_entry_bookings_path, class: 'btn btn-outline-dark' %>
+    <%= link_to 'Close Shop', close_shop_bookings_path, class: 'btn btn-outline-dark' %>
+  </div>
+</div>

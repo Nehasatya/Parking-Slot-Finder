@@ -1,0 +1,9 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  reg_no: MyString
+  first_entry_time: 2023-10-31 11:16:39
+
+two:
+  reg_no: MyString
+  first_entry_time: 2023-10-31 11:16:39
