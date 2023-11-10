@@ -10,6 +10,7 @@ class Booking < ApplicationRecord
 
   # Callbacks
   after_update :calculate_bill
+  after_create :schedule_track_location
 
   #Scope
   scope :on_date, ->(date) {  where("DATE(in_time) = ?", date) }
@@ -28,5 +29,11 @@ class Booking < ApplicationRecord
       self.update( :bill => bill_amt)
     end
   end
+
+  def schedule_track_location
+    @user_ip = $request.remote_ip
+    BookingProcessingJob.perform_later(self.id,@user_ip)
+  end
+
 
 end

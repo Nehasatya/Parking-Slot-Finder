@@ -1,48 +1,4 @@
 <h1>Booking Success!!</h1>
 Slot Number:<%= @booking.slot.id %><hr>
 <%= link_to 'Free Slot', free_slot_booking_path(@booking), class: 'btn btn-outline-dark' %>
-<%#= link_to 'Back', root_path %>
 
-<script>
-
-    window.addEventListener('load',track_location);
-    var track;
-
-    function track_location() {
-        track = setInterval(geolocation, 300000);
-    }
-
-    function geolocation()
-    {
-        navigator.geolocation.getCurrentPosition(showLoc);
-
-    }
-
-    async function showLoc(position) {
-        var lat = position.coords.latitude;
-        var long = position.coords.longitude;
-        var id = <%= @booking.id %>;
-        var data = { lat: lat, lon: long, id: id};
-        console.log(lat,long);
-
-        const response = await fetch(`/bookings/${id}/locations`,{
-            method: 'POST',
-            body: JSON.stringify(data),
-            headers:{
-                'Content-Type': 'application/json',
-                'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').content},
-                'X-Requested-With': 'XMLHttpRequest'
-        });
-        var booking = await response.json();
-        console.log(booking);
-
-        check_out(booking);
-    }
-
-        async function check_out(booking){
-                // console.log(`${!(booking.in_time === null)} && ${ !(booking.out_time === null)}`);
-                if(! (booking.in_time === null) && !( booking.out_time === null)) {
-                    clearInterval(track);
-                }
-            }
-</script>

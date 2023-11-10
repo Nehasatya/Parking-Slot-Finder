@@ -27,11 +27,15 @@ gem "stimulus-rails"
 gem "jbuilder"
 
 # Use Redis adapter to run Action Cable in production
-gem "redis", ">= 4.0.1"
+gem "redis", ">= 4.5.1"
 
 # Gemfile
 gem 'geocoder'
-gem 'web-console'
+gem "sidekiq", '~> 6.5.6', '>= 5.0.5'
+gem 'redis-rails'
+gem "redis-actionpack", "~> 5.3"
+gem 'redis-store'
+gem 'will_paginate', '~> 3.3'
 
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"

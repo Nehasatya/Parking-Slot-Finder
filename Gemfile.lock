@@ -143,22 +143,20 @@ GEM
     nio4r (2.5.9)
     nokogiri (1.15.4-x64-mingw-ucrt)
       racc (~> 1.4)
-    nokogiri (1.15.4-x86_64-linux)
-      racc (~> 1.4)
     psych (5.1.1.1)
       stringio
     public_suffix (5.0.3)
     puma (6.4.0)
       nio4r (~> 2.0)
     racc (1.7.3)
-    rack (3.0.8)
-    rack-session (2.0.0)
-      rack (>= 3.0.0)
+    rack (2.2.8)
+    rack-session (1.0.1)
+      rack (< 3)
     rack-test (2.1.0)
       rack (>= 1.3)
-    rackup (2.1.0)
-      rack (>= 3)
-      webrick (~> 1.8)
+    rackup (1.0.0)
+      rack (< 3)
+      webrick
     rails (7.1.1)
       actioncable (= 7.1.1)
       actionmailbox (= 7.1.1)
@@ -191,12 +189,25 @@ GEM
     rake (13.1.0)
     rdoc (6.6.0)
       psych (>= 4.0.0)
-    redis (5.0.8)
-      redis-client (>= 0.17.0)
-    redis-client (0.18.0)
-      connection_pool
+    redis (4.8.1)
+    redis-actionpack (5.3.0)
+      actionpack (>= 5, < 8)
+      redis-rack (>= 2.1.0, < 3)
+      redis-store (>= 1.1.0, < 2)
+    redis-activesupport (5.3.0)
+      activesupport (>= 3, < 8)
+      redis-store (>= 1.3, < 2)
+    redis-rack (2.1.4)
+      rack (>= 2.0.8, < 3)
+      redis-store (>= 1.2, < 2)
+    redis-rails (5.0.2)
+      redis-actionpack (>= 5.0, < 6)
+      redis-activesupport (>= 5.0, < 6)
+      redis-store (>= 1.2, < 2)
+    redis-store (1.10.0)
+      redis (>= 4, < 6)
     regexp_parser (2.8.2)
-    reline (0.3.9)
+    reline (0.4.0)
       io-console (~> 0.5)
     rexml (3.2.6)
     ruby2_keywords (0.0.5)
@@ -205,6 +216,10 @@ GEM
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
+    sidekiq (6.5.12)
+      connection_pool (>= 2.2.5, < 3)
+      rack (~> 2.0)
+      redis (>= 4.5.0, < 5)
     sprockets (4.2.1)
       concurrent-ruby (~> 1.0)
       rack (>= 2.2.4, < 4)
@@ -213,10 +228,9 @@ GEM
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
     sqlite3 (1.6.8-x64-mingw-ucrt)
-    sqlite3 (1.6.8-x86_64-linux)
     stimulus-rails (1.3.0)
       railties (>= 6.0.0)
-    stringio (3.0.8)
+    stringio (3.0.9)
     thor (1.3.0)
     timeout (0.4.1)
     turbo-rails (1.5.0)
@@ -237,13 +251,13 @@ GEM
     websocket-driver (0.7.6)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
+    will_paginate (3.3.1)
     xpath (3.2.0)
       nokogiri (~> 1.8)
     zeitwerk (2.6.12)
 
 PLATFORMS
   x64-mingw-ucrt
-  x86_64-linux
 
 DEPENDENCIES
   bootsnap
@@ -254,17 +268,22 @@ DEPENDENCIES
   jbuilder
   puma (>= 5.0)
   rails (~> 7.1.1)
-  redis (>= 4.0.1)
+  redis (>= 4.5.1)
+  redis-actionpack (~> 5.3)
+  redis-rails
+  redis-store
   selenium-webdriver
+  sidekiq (~> 6.5.6, >= 5.0.5)
   sprockets-rails
   sqlite3 (~> 1.4)
   stimulus-rails
   turbo-rails
   tzinfo-data
   web-console
+  will_paginate (~> 3.3)
 
 RUBY VERSION
    ruby 3.2.2p53
 
 BUNDLED WITH
-   2.4.19
+   2.4.21

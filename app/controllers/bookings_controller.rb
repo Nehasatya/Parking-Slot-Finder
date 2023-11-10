@@ -25,7 +25,8 @@ class BookingsController < ApplicationController
         nearest_slot = find_nearest_slot
 
         @booking = Booking.create(bookings_params.merge(slot_id: nearest_slot.id, vehicle_id: @vehicle.id).except(:vehicle_reg_no))
-        # Saving if it is a new Vehicle record
+
+         # Saving if it is a new Vehicle record
         if @vehicle.new_record?
           # @vehicle.update(first_entry_time: @booking.in_time)
           if !@vehicle.save
@@ -64,24 +65,24 @@ class BookingsController < ApplicationController
   def slot_history
 
     unless params[:date].blank?
-      @bookings = Booking.on_date(params[:date])
+      @bookings = Booking.on_date(params[:date]).paginate(page: params[:page], per_page: 5)
     else
-      @bookings = Booking.all
+      @bookings = Booking.all.paginate(page: params[:page], per_page: 5)
     end
   end
 
   def vehicle_history
 
     unless params[:vehicle_reg_no].blank?
-      @bookings = Booking.on_same_reg_no(params[:vehicle_reg_no])
-    else
-      @bookings = Booking.all
+      @bookings = Booking.on_same_reg_no(params[:vehicle_reg_no]).paginate(page: params[:page], per_page: 5)
+  else
+      @bookings = Booking.all.paginate(page: params[:page], per_page: 5)
     end
   end
 
   def first_entry
 
-    @vehicles = Vehicle.all
+    @vehicles = Vehicle.all.paginate(page: params[:page], per_page: 5)
 
   end
 
@@ -108,31 +109,6 @@ class BookingsController < ApplicationController
         open_booking.slot.update(status: 'Available')
       end
       redirect_to root_path, notice: 'All Open Bookings Close'
-    end
-  end
-
-  def location
-    lat = params["lat"]
-    lon = params["lon"]
-    @booking = Booking.find(params[:booking][:id])
-    distance = Geocoder::Calculations.distance_between(
-      [lat,lon],
-      [@booking.slot.lat,@booking.slot.lon])
-    if distance < 2 && @booking.in_time.nil?
-      @booking.update(in_time: Time.now)
-      @vehicle = Vehicle.find(@booking.vehicle_id)
-      if @vehicle.first_entry_time.nil?
-        @vehicle.update(first_entry_time: Time.now)
-      end
-    elsif distance < 2 && ! @booking.in_time.nil? && @booking.out_time.nil?
-          @booking.update(out_time: Time.now)
-          @booking.slot.update(status: 'Available')
-    end
-    @booking.save
-    @vehicle.save if @vehicle
-
-    respond_to do |format|
-      format.json { render json: @booking.to_json}
     end
   end
 

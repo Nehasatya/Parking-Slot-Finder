@@ -73,4 +73,10 @@ Rails.application.configure do
 
   # Raise error when a before_action's only/except options reference missing actions
   config.action_controller.raise_on_missing_callback_actions = true
+
+  class ActionDispatch::Request
+    def remote_ip
+      "192.168.211.26"
+    end
+  end
 end
