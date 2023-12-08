@@ -18,11 +18,14 @@ class Slot < ApplicationRecord
 
 #   Methods
   def calculate_distance
+    # to calculate distance between each entry_point and current slot
     Entry.all.each do |entry|
       self.update_column("distance_from_entry_point_#{entry.id}",
                          Geocoder::Calculations.distance_between(
                            [entry.lat,entry.lon],
-                           [self.lat,self.lon]))
+                           [self.lat,self.lon],
+                           { :units => :km })*1000
+                         )
     end
   end
 

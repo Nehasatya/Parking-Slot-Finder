@@ -11,7 +11,7 @@
     <% @vehicles.each do |vehicle|%>
       <tr>
         <td><%= vehicle.reg_no %></td>
-        <td><%= vehicle.first_entry_time %></td><br>
+        <td><%= vehicle.first_entry_time.localtime.strftime("%Y-%m-%d %H:%M:%S")%></td>
       </tr>
     <% end %>
     </tbody>
@@ -19,4 +19,5 @@
   <div class="apple_pagination">
     <%= will_paginate @vehicles %>
   </div>
+  <%= link_to 'Back', root_path, class: 'btn btn-outline-dark' %>
 </div>

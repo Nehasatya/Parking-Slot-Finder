@@ -10,7 +10,7 @@ class Booking < ApplicationRecord
 
   # Callbacks
   after_update :calculate_bill
-  after_create :schedule_track_location
+  after_commit :schedule_track_location, on: :create
 
   #Scope
   scope :on_date, ->(date) {  where("DATE(in_time) = ?", date) }

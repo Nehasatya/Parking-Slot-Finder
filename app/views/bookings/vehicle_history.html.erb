@@ -15,7 +15,7 @@
     <% @bookings.each do |booking|%>
      <tr>
        <td><%= booking.slot.id %></td>
-       <td><%= booking.in_time.to_date %></td><br>
+       <td><%= booking.in_time.to_date %></td>
      </tr>
     <% end %>
     </tbody>
@@ -23,4 +23,5 @@
   <div class="apple_pagination">
     <%= will_paginate @bookings %>
   </div>
+  <%= link_to 'Back', root_path, class: 'btn btn-outline-dark' %>
 </div>

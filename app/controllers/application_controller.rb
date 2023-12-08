@@ -7,9 +7,9 @@ class ApplicationController < ActionController::Base
 
   def lookup_ip_location
     if Rails.env.development?
-      Geocoder.search(request.remote_ip).first
+      Geocoder.search($request.remote_ip).first
     else
-      request.location
+      $request.location
     end
   end
 

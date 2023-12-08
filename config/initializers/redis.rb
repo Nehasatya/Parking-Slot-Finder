@@ -1,1 +1,7 @@
-Redis.current = Redis.new(:host => '127.0.0.1', :port => 6379,expire_after: 60)
+module ReadCache
+  class << self
+    def redis
+      @redis ||= Redis.new(:url => (ENV["REDIS_URL"] || 'redis://127.0.0.1:6379'))
+    end
+  end
+end

@@ -1,5 +1,7 @@
-<h1>Close Shop</h1>
+<div class="container">
+  <h1>Close Shop</h1>
 
-<%= form_with url:close_shop_bookings_path, method: :get do |form| %>
-  <%= form.submit 'Close Shop' %>
-<%end %>
+  <%= form_with url:close_shop_bookings_path, method: :get do |form| %>
+    <%= form.submit 'Close Shop', class: 'btn btn-outline-dark'%>
+  <%end %>
+</div>

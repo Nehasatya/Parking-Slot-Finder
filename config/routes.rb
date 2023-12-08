@@ -7,7 +7,6 @@ Rails.application.routes.draw do
       get '/slot_history', to: 'bookings#slot_history'
       get '/vehicle_history', to: 'bookings#vehicle_history'
       get '/first_entry', to: 'bookings#first_entry'
-      # post '/free_slot', to: 'bookings#free_slot'
       get '/close_shop', to: 'bookings#close_shop'
     end
 
