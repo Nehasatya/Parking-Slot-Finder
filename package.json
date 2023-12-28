@@ -1,0 +1,11 @@
+{
+  "dependencies": {
+    "jquery": "^3.7.1"
+  },
+  "name": "jquery",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://bitbucket.org/workspace-practice-assignments/parking_slot_finder/src/master/",
+  "author": "Neha <nehasatya02@gmail.com>",
+  "license": "MIT"
+}

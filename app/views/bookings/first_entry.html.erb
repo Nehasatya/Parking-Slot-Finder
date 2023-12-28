@@ -1,0 +1,19 @@
+<div class="container">
+  <h1>Vehicles First Entry Time</h1>
+
+  <h2>Vehicle Details</h2>
+  <table class='table table-dark table-striped-columns table-hover table-borderless align-middle table-responsive-sm'>
+    <thead>
+    <th>Vehicle Reg  No</th>
+    <th>First Entry</th>
+    </thead>
+    <tbody>
+    <% @vehicles.each do |vehicle|%>
+      <tr>
+        <td><%= vehicle.reg_no %></td>
+        <td><%= vehicle.first_entry_time %></td><br>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>

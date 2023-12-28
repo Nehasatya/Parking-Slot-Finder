@@ -1,0 +1,17 @@
+<div class="container">
+<!--  <h1>Free Slots</h1>-->
+
+  <%#= form_with url: free_slot_bookings_path do |form| %>
+    <%#=form.label :slot_id, class: 'form-label'%>
+    <%#=form.text_field :slot_id,class: 'form-control' %>
+    <%#=form.label :vehicle_reg_no, class: 'form-label' %>
+<!--    <%#=form.text_field :vehicle_reg_no, class: 'form-control' %><br>-->
+    <%#=form.submit 'Free', class: 'btn btn-outline-dark link-offset-2 link-underline link-underline-opacity-0' %>
+  <%#end %>
+<!--  <br>-->
+  <h1>Slot free</h1>
+  <h2>Thank you for Coming!!!</h2>
+  <h2>Payment Details</h2>
+  <h2>Pay Amt: <%= number_to_currency @booking.bill %></h2>
+  <%= link_to 'Back', root_path %>
+</div>
